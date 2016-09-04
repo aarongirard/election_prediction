@@ -1,5 +1,6 @@
 import requests
 import time
+import multiprocessing
 
 from database import add_record_StateElectoralCollege_table
 
@@ -29,19 +30,28 @@ def parse_json(json):
     contracts.append(pred)
   return contracts
 
+def run_one_state(state,i):
+  #print ' requesting ', state
+  req_json = get_request_by_state(state)
+  if req_json != 0:
+    values = parse_json(req_json)
+    for val in values:
+      val['state'] = line #add state value
+      add_record_StateElectoralCollege_table(val)
+  print i
+
+
 def main():
   #run every 5 minutes
   while True:
     with open('states.txt','r') as f:
+      i=0
       for line in f:
         line = line.strip()
-        print ' requesting ', line
-        req_json = get_request_by_state(line)
-        if req_json != 0:
-          values = parse_json(req_json)
-          for val in values:
-            val['state'] = line #add state value
-            add_record_StateElectoralCollege_table(val)
+        p = multiprocessing.Process(target=run_one_state, args=(line,i))
+        p.start()
+        i+=1
+        #run_one_state(line)
     time.sleep(300)#60*5
 
   
