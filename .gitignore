@@ -1,4 +1,5 @@
 *.pyc
 *.db
 log_exceptions.txt
+.DS_Store
 
