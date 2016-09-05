@@ -7,6 +7,10 @@ import election_logic
 #hacks to import file in parent dir
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import database
+import creds
+
+HOST = creds.credentials['host']
+PORT = creds.credentials['port']
 
 def log(thing_to_log):
   with open('log.txt', 'a+') as f:
@@ -62,4 +66,4 @@ def predictit_prediction_data_api():
     return data_as_json
 
 if __name__ == '__main__':
-  app.run(host='localhost', port = 8008)
+  app.run(host=HOST, port = PORT)
