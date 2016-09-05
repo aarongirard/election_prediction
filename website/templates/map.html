@@ -93,7 +93,7 @@
             });
     }); 
     //get data, color map
-    $.get( "http://localhost:8008/state_predictit_prediction", function(data) {
+    $.get("http://localhost:8008/state_predictit_prediction", function(data) {
       data = JSON.parse(data)
       data.forEach(function(d){
         if(d.party == "Republican")
