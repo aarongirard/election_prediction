@@ -48,7 +48,7 @@ def main():
         p = multiprocessing.Process(target=run_one_state, args=(line,))
         p.start()
         #run_one_state(line)
-    time.sleep(300)#60*5
+    time.sleep(3600)#60*60
 
   
 if __name__ == '__main__':
