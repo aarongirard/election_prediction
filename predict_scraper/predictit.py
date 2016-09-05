@@ -1,7 +1,6 @@
-import requests
-import time
-import multiprocessing
+import requests, time, multiprocessing, os, sys
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from database import add_record_StateElectoralCollege_table
 
 def log(error):

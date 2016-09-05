@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 World Map</title>
+    <style>
+      path {
+        stroke: white;
+        stroke-width: 0.5px;
+        fill: black;
+      }
+
+      #WY {
+        fill: blue;
+      }
+    </style>
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <body>
+    <svg height="600" width="900">
+      
+    </svg>
+    <script type="text/javascript">
+      var width = 900;
+      var height = 600;
+      
+      //define svg element and append it to html element
+      var svg = d3.select("body")
+                  .append("svg")
+                  .attr("width", width)
+                  .attr("height", height);
+
+      //projection function: which to use
+      var projection = d3.geoAlbersUsa();
+                         
+        //scale, rotate, translate 
+
+      //takes a feature or geometry object from geojson
+      //and turn it into a drawable path
+      var path = d3.geoPath()
+          .projection(projection);
+
+      //load in geojson data from file
+      d3.json("state.json", function(json){
+        //bind data and create one path per geojson feature
+        svg.selectAll('path')
+           .data(json.features)
+           .enter()
+           .append('path')
+             .attr('d',path)
+             .attr('id', function(d){
+              console.log(d.properties.STUSPS10)
+              return d.properties.STUSPS10
+             })
+      });      
+    </script>
+  </body>
+</html>
