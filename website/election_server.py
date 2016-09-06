@@ -45,7 +45,8 @@ def weighted_EV_prediction():
 def get_election_map_geojson():
   #read data as json, then return it
   #need to optimize using topojson
-  with open('state.json', 'r') as f:
+  #us.json for geojson
+  with open('us.json', 'r') as f:
     data = json.load(f)
 
   return json.dumps(data)

@@ -78,7 +78,8 @@
     d3.json('/us_geojson', function(json){
       //bind data and create one path per geojson feature
       svg.selectAll('path')
-         .data(json.features)
+         //.data(json.features)
+         .data(topojson.feature(json, json.objects.state).features)
          .enter()
          .append('path')
            .attr('d',path)
