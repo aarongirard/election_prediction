@@ -75,7 +75,7 @@
         .projection(projection);
 
     //load in geojson data from file
-    d3.json('http://localhost:8008/us_geojson', function(json){
+    d3.json('/us_geojson', function(json){
       //bind data and create one path per geojson feature
       svg.selectAll('path')
          .data(json.features)
@@ -93,7 +93,7 @@
             });
     }); 
     //get data, color map
-    $.get("http://localhost:8008/state_predictit_prediction", function(data) {
+    $.get("/state_predictit_prediction", function(data) {
       data = JSON.parse(data)
       data.forEach(function(d){
         if(d.party == "Republican")
@@ -104,7 +104,7 @@
     });
 
     //add electoral count prediction to info
-    $.get( "http://localhost:8008/electoral_vote_prediction", function(data) {
+    $.get( "/electoral_vote_prediction", function(data) {
       data = JSON.parse(data)
       $('#dem_count').text('Democrat: ' + data.dem)
       $('#rep_count').text('Republican: ' + data.rep)

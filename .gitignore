@@ -2,4 +2,4 @@
 *.db
 log_exceptions.txt
 .DS_Store
-
+creds.py
