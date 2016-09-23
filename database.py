@@ -31,7 +31,7 @@ def add_record_StateElectoralCollege_table(values,db_path):
   DBNAME = 'prediction.db'
   DBNAME = db_path + DBNAME
   DBNAME = os.path.realpath(DBNAME)
-  with sql.connect(DBNAME) as connection:
+  with sql.connect(DBNAME, timeout=30.0) as connection:
     c = connection.cursor()
     values = (values['time'],values['state'],
       values['name'],values['lastcloseprice'])
