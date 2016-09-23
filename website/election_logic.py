@@ -18,6 +18,8 @@ def parse_winning_party(data):
       predictions.append({'state': state,
         'party': party,'price': price})
 
+
+  #from json here {predictions,weighted_predictions,}
   return predictions
 
 #need to pass the resutls of parse_winning_party to this as data
