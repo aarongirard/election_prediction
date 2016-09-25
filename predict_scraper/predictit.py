@@ -41,12 +41,10 @@ def run_one_state(state):
 
 
 def main():
-  #run every 5 minutes
-  print 'hey'
-  """while True:
+  #run every 60 minutes
+  while True:
     with open('states.txt','r') as f:
       threads = []
-      print 'hello'
       for line in f:
         line = line.strip()
         t = threading.Thread(target=run_one_state, args=(line,))
@@ -55,11 +53,11 @@ def main():
           print 'starting thread'
           t.start()
         except e:
-          log(e)
+          log(str(e))
         #p = multiprocessing.Process(target=run_one_state, args=(line,))
         #p.start()
         #run_one_state(line)
-    time.sleep(3600)#60*60"""
+    time.sleep(3600)#60*60
 
   
 if __name__ == '__main__':
