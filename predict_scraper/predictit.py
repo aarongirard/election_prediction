@@ -1,11 +1,11 @@
-import requests, time, multiprocessing, os, sys, threading, datetime
+import requests, time, multiprocessing, os, sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from database import add_record_StateElectoralCollege_table
 
 def log(error):
   with open('log_exceptions.txt', 'a+') as f:
-    f.write(str(datetime.datetime.now())+' :'+error+'\n')
+    f.write(error+'\n')
 
 #returns json of requested states' data
 def get_request_by_state(state):
